@@ -84,12 +84,12 @@ export const MobileViewModal: React.FC<MobileViewModalProps> = ({
   const [isCopied, setIsCopied] = useState(false);
   const [activeTab, setActiveTab] = useState<'simulator' | 'qrcode'>('simulator');
 
-  const mobileUrl = 'https://sufiansweb.vercel.app';
+  const mobileUrl = 'https://sufiansmurottal.vercel.app';
 
   // Generate QR Code on load
   useEffect(() => {
     let isMounted = true;
-    const targetUrl = typeof window !== 'undefined' && window.location.origin.includes('vercel.app')
+    const targetUrl = typeof window !== 'undefined' && window.location.href.startsWith('http')
       ? window.location.href
       : mobileUrl;
 

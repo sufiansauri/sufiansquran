@@ -44,7 +44,7 @@ export const IslamicBackground: React.FC<IslamicBackgroundProps> = ({
   }, [backgrounds.length]);
 
   return (
-    <div className={`fixed inset-0 pointer-events-none overflow-hidden select-none z-0 ${themeConfig.bgGradient}`}>
+    <div className={`absolute inset-0 pointer-events-none overflow-hidden select-none z-0 ${themeConfig.bgGradient}`}>
       {/* 1. Cross-Fading Mobile Portrait Islamic Spiritual Background Images (Clear & Vivid) */}
       {backgrounds.map((bg, index) => {
         const isActive = index === currentIndex;
@@ -63,6 +63,17 @@ export const IslamicBackground: React.FC<IslamicBackgroundProps> = ({
               src={bg.src}
               alt={bg.title}
               referrerPolicy="no-referrer"
+              onError={(e) => {
+                const target = e.currentTarget;
+                if (!target.dataset.fallbackTried) {
+                  target.dataset.fallbackTried = 'true';
+                  // Fallback to static public folder copy if hashed asset fails
+                  const filename = bg.src.split('/').pop()?.split('?')[0];
+                  if (filename) {
+                    target.src = `/backgrounds/${filename}`;
+                  }
+                }
+              }}
               className="w-full h-full object-cover object-center filter brightness-[0.92] contrast-[1.05] saturate-[1.08]"
             />
           </div>

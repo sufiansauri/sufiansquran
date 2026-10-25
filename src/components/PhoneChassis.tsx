@@ -52,9 +52,9 @@ export const PhoneChassis: React.FC<PhoneChassisProps> = ({
           style={{
             maxWidth: `${presetConfig.width}px`,
           }}
-          className={`relative w-full flex flex-col justify-between overflow-hidden bg-black transition-all duration-300 ${
+          className={`relative w-full flex flex-col justify-between overflow-hidden bg-stone-950 transition-all duration-300 ${
             frameEnabled
-              ? `h-[100dvh] md:h-[min(880px,94vh)] md:border-[10px] md:border-stone-800 md:shadow-[0_25px_65px_-10px_rgba(0,0,0,0.95)] md:ring-1 md:ring-white/15 md:pt-4 ${presetConfig.radius}`
+              ? `h-[100dvh] md:h-[min(880px,94vh)] md:border-[10px] md:border-stone-800 md:shadow-[0_25px_65px_-10px_rgba(0,0,0,0.95)] md:ring-1 md:ring-white/15 ${presetConfig.radius}`
               : 'h-[100dvh] shadow-2xl'
           }`}
         >

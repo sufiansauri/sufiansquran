@@ -166,6 +166,17 @@ export default function App() {
         </button>
       </div>
 
+      {/* Ambient Desktop Backdrop Glow when Mobile Frame is active */}
+      {isMobileFrameEnabled && (
+        <div className="hidden md:block absolute inset-0 pointer-events-none opacity-40 blur-2xl scale-105 overflow-hidden">
+          <IslamicBackground
+            theme={settings.theme}
+            surahNumber={currentSurahNumber}
+            totalAyahs={surahData?.numberOfAyahs}
+          />
+        </div>
+      )}
+
       {/* Responsive Container & Smartphone Chassis */}
       <PhoneChassis frameEnabled={isMobileFrameEnabled} preset={mobilePreset}>
         {/* Animated Islamic Ambient Background (Cross-Fades every 30s with Surah Theme Adaptation & Long Surah Stock) */}

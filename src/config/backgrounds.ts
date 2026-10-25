@@ -1,4 +1,14 @@
 import { getSurahMeta } from './surahs';
+import bgStraightPath from '../assets/images/bg_straight_path_1792891191982.jpg';
+import bgHolyMasjid from '../assets/images/bg_holy_masjid_1792891192622.jpg';
+import bgMakkahKaaba from '../assets/images/bg_makkah_kaaba_1792891193038.jpg';
+import prophetMosque from '../assets/images/prophet_mosque_sunset_1792892774454.jpg';
+import quranRehal from '../assets/images/quran_rehal_glow_1792892775925.jpg';
+import mountHira from '../assets/images/mount_hira_dawn_1792892775944.jpg';
+import islamicGarden from '../assets/images/islamic_garden_water_1792892776888.jpg';
+import desertFajr from '../assets/images/desert_fajr_dunes_1792892777112.jpg';
+import bgNatureOlive from '../assets/images/bg_nature_olive_fig_1792891193638.jpg';
+import bgDesertStars from '../assets/images/bg_desert_stars_1792891194811.jpg';
 
 export interface BackgroundItem {
   id: string;
@@ -13,70 +23,70 @@ export const ISLAMIC_BACKGROUNDS: BackgroundItem[] = [
     id: 'straight_path',
     title: 'Ash-Shirath Al-Mustaqim',
     description: 'Jalan lurus yang dibimbing Allah menuju cahaya fajar',
-    src: '/src/assets/images/bg_straight_path_1792891191982.jpg',
+    src: bgStraightPath,
     themes: ['guidance', 'fatihah', 'iman', 'nature', 'dawn'],
   },
   {
     id: 'holy_masjid',
     title: 'Baitullah & Masjid Agung',
     description: 'Menara marmer dan kubah indah tempat bersujud kepada Allah',
-    src: '/src/assets/images/bg_holy_masjid_1792891192622.jpg',
+    src: bgHolyMasjid,
     themes: ['masjid', 'worship', 'sujud', 'fatihah', 'dusk'],
   },
   {
     id: 'makkah_kaaba',
     title: "Ka'bah Al-Musyarrafah",
     description: 'Kiblat umat Islam di Tanah Suci Makkah Al-Mukarramah',
-    src: '/src/assets/images/bg_makkah_kaaba_1792891193038.jpg',
+    src: bgMakkahKaaba,
     themes: ['kaaba', 'makkah', 'hajj', 'baqarah', 'ibrahim'],
   },
   {
     id: 'prophet_mosque',
     title: 'Masjid Nabawi Madinah',
     description: 'Kubah hijau megah dan pelataran suci Nabawi di kala senja',
-    src: '/src/assets/images/prophet_mosque_sunset_1792892774454.jpg',
+    src: prophetMosque,
     themes: ['nabawi', 'madinah', 'rasulullah', 'masjid', 'dusk', 'baqarah'],
   },
   {
     id: 'quran_rehal',
     title: "Mushaf Al-Qur'an & Rehal",
     description: 'Kalam Ilahi petunjuk kebenaran bermandikan cahaya berkah fajar',
-    src: '/src/assets/images/quran_rehal_glow_1792892775925.jpg',
+    src: quranRehal,
     themes: ['quran', 'wahyu', 'hidayah', 'cahaya', 'sanctuary', 'baqarah'],
   },
   {
     id: 'mount_hira',
     title: 'Jabal An-Nur & Gua Hira',
     description: 'Puncak gunung suci tempat turunnya wahyu pertama saat fajar',
-    src: '/src/assets/images/mount_hira_dawn_1792892775944.jpg',
+    src: mountHira,
     themes: ['hira', 'jabal', 'wahyu', 'dawn', 'mountain', 'kahf'],
   },
   {
     id: 'islamic_garden',
     title: 'Taman Air Firdaus',
     description: 'Telaga jernih dan pepohonan asri penyejuk jiwa yang beriman',
-    src: '/src/assets/images/islamic_garden_water_1792892776888.jpg',
+    src: islamicGarden,
     themes: ['jannah', 'garden', 'water', 'fountain', 'nature', 'rahman', 'waqiah'],
   },
   {
     id: 'desert_fajr_dunes',
     title: 'Gurun Emas Waktu Fajr',
     description: 'Hamparan padang pasir luas tanda keagungan ciptaan Allah',
-    src: '/src/assets/images/desert_fajr_dunes_1792892777112.jpg',
+    src: desertFajr,
     themes: ['desert', 'fajr', 'vast', 'creation', 'dunes', 'yusuf'],
   },
   {
     id: 'nature_olive_fig',
     title: 'Alam & Pepohonan Zaitun-Tin',
     description: 'Ciptaan Allah yang asri dan tanaman yang diberkahi',
-    src: '/src/assets/images/bg_nature_olive_fig_1792891193638.jpg',
+    src: bgNatureOlive,
     themes: ['nature', 'olive', 'tin', 'rahman', 'rizq'],
   },
   {
     id: 'desert_stars',
     title: 'Gugusan Bintang & Langit Malam',
     description: 'Kebesaran ciptaan Allah di langit malam yang penuh galaksi',
-    src: '/src/assets/images/bg_desert_stars_1792891194811.jpg',
+    src: bgDesertStars,
     themes: ['cosmos', 'stars', 'mulk', 'najm', 'tariq', 'lail', 'yusuf'],
   },
 ];
