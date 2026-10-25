@@ -1,0 +1,6 @@
+{
+  "name": "Murottal Player - Al-Qur'an Mobile",
+  "description": "Aplikasi mobile web murottal Al-Qur'an modern dengan pemutar audio per ayat, teks Arab Uthmani, terjemah Indonesia, dan tipografi adaptif satu layar tanpa scroll.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

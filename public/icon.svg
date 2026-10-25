@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#062e24"/>
+      <stop offset="50%" stop-color="#021c15"/>
+      <stop offset="100%" stop-color="#010f0b"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fae084"/>
+      <stop offset="50%" stop-color="#d4af37"/>
+      <stop offset="100%" stop-color="#aa820a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#d4af37" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#d4af37" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <circle cx="256" cy="256" r="210" fill="url(#glow)"/>
+  
+  <!-- Outer Decorative Ring -->
+  <circle cx="256" cy="256" r="190" fill="none" stroke="url(#gold)" stroke-width="4" stroke-opacity="0.6"/>
+  <circle cx="256" cy="256" r="176" fill="none" stroke="url(#gold)" stroke-width="1.5" stroke-dasharray="6 6" stroke-opacity="0.8"/>
+  
+  <!-- 8-Pointed Star Motif (Rub el Hizb) Background -->
+  <g transform="translate(256 256) scale(0.92) translate(-256 -256)" opacity="0.35">
+    <rect x="136" y="136" width="240" height="240" rx="20" fill="none" stroke="url(#gold)" stroke-width="3"/>
+    <rect x="136" y="136" width="240" height="240" rx="20" transform="rotate(45 256 256)" fill="none" stroke="url(#gold)" stroke-width="3"/>
+  </g>
+  
+  <!-- Quran Book / Rehal Stand Art -->
+  <!-- Soundwaves / Light rays emanating upwards -->
+  <path d="M 220 180 Q 256 160 292 180" fill="none" stroke="url(#gold)" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+  <path d="M 200 160 Q 256 135 312 160" fill="none" stroke="url(#gold)" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/>
+  <path d="M 180 140 Q 256 110 332 140" fill="none" stroke="url(#gold)" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+
+  <!-- Quran Open Pages -->
+  <g fill="url(#gold)">
+    <!-- Left Page -->
+    <path d="M 250 200 C 220 195 180 205 140 220 C 135 222 132 227 132 232 L 132 315 C 132 321 137 326 143 324 C 180 310 220 305 250 315 Z" opacity="0.95"/>
+    <!-- Right Page -->
+    <path d="M 262 200 C 292 195 332 205 372 220 C 377 222 380 227 380 232 L 380 315 C 380 321 375 326 369 324 C 332 310 292 305 262 315 Z" opacity="0.95"/>
+    
+    <!-- Spine center & Bookstand / Rehal wooden base -->
+    <path d="M 251 200 L 261 200 L 261 315 L 251 315 Z" opacity="0.7"/>
+    
+    <!-- Crossed Rehal Stand -->
+    <path d="M 160 340 L 246 295 L 266 295 L 352 340 C 358 343 355 352 348 352 L 310 352 L 256 318 L 202 352 L 164 352 C 157 352 154 343 160 340 Z" opacity="0.9"/>
+    <path d="M 220 352 L 256 385 L 292 352 Z" opacity="0.8"/>
+  </g>
+  
+  <!-- Subtle Play / Audio Triangle Accent -->
+  <polygon points="250,240 250,266 272,253" fill="#062e24" opacity="0.85"/>
+</svg>

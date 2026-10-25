@@ -1,0 +1,20 @@
+{
+  "id": "/",
+  "name": "Murottal Player - Al-Qur'an",
+  "short_name": "Murottal",
+  "description": "Aplikasi murottal Al-Qur'an satu layar modern dengan audio per ayat, teks Arab Uthmani, dan terjemahan Indonesia.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#031510",
+  "theme_color": "#031510",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
