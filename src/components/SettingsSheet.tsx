@@ -40,6 +40,7 @@ interface SettingsSheetProps {
   onDownloadSurah: () => void;
   onDeleteSurahDownload: () => void;
   onClearAllDownloads: () => void;
+  onOpenMobileViewModal?: () => void;
 }
 
 export const SettingsSheet: React.FC<SettingsSheetProps> = ({
@@ -63,6 +64,7 @@ export const SettingsSheet: React.FC<SettingsSheetProps> = ({
   onDownloadSurah,
   onDeleteSurahDownload,
   onClearAllDownloads,
+  onOpenMobileViewModal,
 }) => {
   const { isInstallable, isInstalled, isIOS, install } = usePWAInstall();
   const themeConfig = THEMES[settings.theme] || THEMES['midnight-emerald'];
@@ -372,7 +374,29 @@ export const SettingsSheet: React.FC<SettingsSheetProps> = ({
             )}
           </div>
 
-          {/* 8. PWA Install Action */}
+          {/* 8. Tampilan Versi Mobile & Mode HP */}
+          <div className="pt-2 border-t border-white/10">
+            <button
+              onClick={() => {
+                onClose();
+                onOpenMobileViewModal?.();
+              }}
+              className="w-full py-3 px-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-400/40 text-stone-200 hover:text-white hover:bg-white/10 font-ui font-semibold text-xs flex items-center justify-between shadow-sm active:scale-95 transition"
+            >
+              <div className="flex items-center gap-2.5">
+                <div className="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-300 flex items-center justify-center border border-amber-400/30">
+                  <Smartphone className="w-4 h-4" />
+                </div>
+                <div className="text-left">
+                  <div className="text-xs text-white font-semibold">Tampilan Versi Mobile</div>
+                  <div className="text-[10px] text-stone-400 font-normal">Bingkai HP, Preset Layar & QR Code</div>
+                </div>
+              </div>
+              <span className="text-[11px] text-amber-300 font-mono font-medium">Buka →</span>
+            </button>
+          </div>
+
+          {/* 9. PWA Install Action */}
           <div className="pt-2 border-t border-white/10">
             {isInstallable && (
               <button

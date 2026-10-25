@@ -1,4 +1,4 @@
-import { BookOpen, Mic, Settings, Info, ChevronDown, CloudDownload, CloudCheck, Loader2 } from 'lucide-react';
+import { BookOpen, Mic, Settings, Info, ChevronDown, CloudDownload, CloudCheck, Loader2, Smartphone } from 'lucide-react';
 import { ThemeType } from '../types/quran';
 import { THEMES } from '../config/themes';
 
@@ -17,6 +17,7 @@ interface TopBarProps {
   onOpenQariSheet: () => void;
   onOpenSettingsSheet: () => void;
   onOpenAboutSheet: () => void;
+  onOpenMobileViewModal: () => void;
 }
 
 export const TopBar: React.FC<TopBarProps> = ({
@@ -34,6 +35,7 @@ export const TopBar: React.FC<TopBarProps> = ({
   onOpenQariSheet,
   onOpenSettingsSheet,
   onOpenAboutSheet,
+  onOpenMobileViewModal,
 }) => {
   const themeConfig = THEMES[theme] || THEMES['midnight-emerald'];
 
@@ -67,8 +69,19 @@ export const TopBar: React.FC<TopBarProps> = ({
           </div>
         </button>
 
-        {/* Right Action Icons: Download Surah, Qari, Settings, About */}
+        {/* Right Action Icons: Mobile View, Download Surah, Qari, Settings, About */}
         <div className="flex items-center gap-1">
+          {/* Versi Mobile Button */}
+          <button
+            onClick={onOpenMobileViewModal}
+            aria-label="Tampilkan Versi Mobile"
+            title="Tampilkan Versi Mobile & Mode HP"
+            className={`px-2 h-10 rounded-xl flex items-center gap-1 border ${themeConfig.glassSurface} ${themeConfig.glassBorder} text-stone-200 hover:text-amber-300 active:scale-90 transition-all min-h-[44px]`}
+          >
+            <Smartphone className="w-4 h-4 text-amber-400 shrink-0" />
+            <span className="font-ui text-[11px] font-semibold hidden md:inline">Versi Mobile</span>
+          </button>
+
           {/* Download 1 Surah Offline Button */}
           <button
             onClick={onDownloadSurah}

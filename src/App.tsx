@@ -11,7 +11,9 @@ import { SettingsSheet } from './components/SettingsSheet';
 import { AboutSheet } from './components/AboutSheet';
 import { Toast } from './components/Toast';
 import { THEMES } from './config/themes';
-import { Loader2 } from 'lucide-react';
+import { Loader2, Smartphone } from 'lucide-react';
+import { MobileViewModal, MobilePreset, MOBILE_PRESETS } from './components/MobileViewModal';
+import { PhoneChassis } from './components/PhoneChassis';
 
 export default function App() {
   const [hasStarted, setHasStarted] = useState<boolean>(false);
@@ -23,6 +25,31 @@ export default function App() {
   const [isQariSheetOpen, setIsQariSheetOpen] = useState<boolean>(false);
   const [isSettingsSheetOpen, setIsSettingsSheetOpen] = useState<boolean>(false);
   const [isAboutSheetOpen, setIsAboutSheetOpen] = useState<boolean>(false);
+  const [isMobileViewModalOpen, setIsMobileViewModalOpen] = useState<boolean>(false);
+
+  // Mobile Version Frame & Preset Settings (saved in localStorage)
+  const [isMobileFrameEnabled, setIsMobileFrameEnabled] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('quran_mobile_frame');
+      if (saved !== null) return saved === 'true';
+    }
+    return true;
+  });
+  const [mobilePreset, setMobilePreset] = useState<MobilePreset>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('quran_mobile_preset') as MobilePreset;
+      if (saved && MOBILE_PRESETS[saved]) return saved;
+    }
+    return 'iphone';
+  });
+
+  useEffect(() => {
+    localStorage.setItem('quran_mobile_frame', String(isMobileFrameEnabled));
+  }, [isMobileFrameEnabled]);
+
+  useEffect(() => {
+    localStorage.setItem('quran_mobile_preset', mobilePreset);
+  }, [mobilePreset]);
 
   // Core Quran Player Hook
   const {
@@ -109,9 +136,38 @@ export default function App() {
   };
 
   return (
-    <div className="w-full h-full min-h-[100dvh] max-h-[100dvh] bg-black text-white flex justify-center items-center overflow-hidden select-none">
-      {/* Mobile-first centered frame (Max 480px on desktop) */}
-      <div className="relative w-full max-w-[480px] h-[100dvh] flex flex-col justify-between overflow-hidden shadow-2xl bg-black">
+    <div className="w-full h-full min-h-[100dvh] max-h-[100dvh] bg-stone-950 text-white flex justify-center items-center overflow-hidden select-none relative">
+      {/* Floating Desktop Quick Mobile Toolbar */}
+      <div className="hidden md:flex fixed top-4 right-4 z-40 items-center gap-2 bg-stone-900/90 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded-2xl shadow-2xl select-none">
+        <button
+          onClick={() => setIsMobileViewModalOpen(true)}
+          className="flex items-center gap-2 text-stone-200 hover:text-amber-300 transition text-xs font-ui font-semibold"
+          title="Pengaturan Versi Mobile & Buka di HP via QR Code"
+        >
+          <div className="w-6 h-6 rounded-lg bg-amber-500/20 text-amber-300 flex items-center justify-center border border-amber-400/30">
+            <Smartphone className="w-3.5 h-3.5" />
+          </div>
+          <span>Versi Mobile</span>
+          <span className="text-[10px] text-stone-400 font-mono px-1.5 py-0.5 rounded-md bg-white/5 border border-white/10">
+            {MOBILE_PRESETS[mobilePreset].name.split(' ')[0]}
+          </span>
+        </button>
+        <div className="w-px h-4 bg-white/10" />
+        <button
+          onClick={() => setIsMobileFrameEnabled(prev => !prev)}
+          className={`px-2 py-1 rounded-lg text-[11px] font-ui transition ${
+            isMobileFrameEnabled
+              ? 'bg-amber-500 text-stone-950 font-bold'
+              : 'text-stone-400 hover:text-stone-200 bg-white/5'
+          }`}
+          title="Nyalakan/Matikan Bingkai Smartphone di Layar Komputer"
+        >
+          {isMobileFrameEnabled ? 'Bingkai HP ON' : 'Tanpa Bingkai'}
+        </button>
+      </div>
+
+      {/* Responsive Container & Smartphone Chassis */}
+      <PhoneChassis frameEnabled={isMobileFrameEnabled} preset={mobilePreset}>
         {/* Animated Islamic Ambient Background (Cross-Fades every 30s with Surah Theme Adaptation & Long Surah Stock) */}
         <IslamicBackground
           theme={settings.theme}
@@ -146,6 +202,7 @@ export default function App() {
               onOpenQariSheet={() => setIsQariSheetOpen(true)}
               onOpenSettingsSheet={() => setIsSettingsSheetOpen(true)}
               onOpenAboutSheet={() => setIsAboutSheetOpen(true)}
+              onOpenMobileViewModal={() => setIsMobileViewModalOpen(true)}
             />
 
             {/* Central Verse Text Area (FitText with Binary Search Font Fitting) */}
@@ -259,6 +316,7 @@ export default function App() {
               onDownloadSurah={downloadCurrentSurah}
               onDeleteSurahDownload={deleteCurrentSurah}
               onClearAllDownloads={clearAllDownloads}
+              onOpenMobileViewModal={() => setIsMobileViewModalOpen(true)}
             />
 
             <AboutSheet
@@ -266,6 +324,17 @@ export default function App() {
               theme={settings.theme}
               currentQariName={selectedQari.name}
               onClose={() => setIsAboutSheetOpen(false)}
+            />
+
+            {/* Mobile Version & Device Preset Modal */}
+            <MobileViewModal
+              isOpen={isMobileViewModalOpen}
+              theme={settings.theme}
+              frameEnabled={isMobileFrameEnabled}
+              selectedPreset={mobilePreset}
+              onClose={() => setIsMobileViewModalOpen(false)}
+              onToggleFrame={setIsMobileFrameEnabled}
+              onSelectPreset={setMobilePreset}
             />
 
             {/* Toast Notifications & Error Handling */}
@@ -276,7 +345,7 @@ export default function App() {
             />
           </>
         )}
-      </div>
+      </PhoneChassis>
     </div>
   );
 }
